@@ -19,9 +19,10 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B clean package
+        working-directory: Tablist
 
       - name: Upload built jar
         uses: actions/upload-artifact@v4
         with:
           name: Tablist-plugin-jar
-          path: target/*.jar
+          path: Tablist/target/*.jar
