@@ -1,0 +1,67 @@
+# =========================================================
+#  Tablist - configuration
+# =========================================================
+
+# Toggled at runtime with /display lp tab enable|disable and
+# /display lp name enable|disable. These starting values are only
+# used the very first time the plugin runs; after that the command
+# is what changes them (and they're saved back here automatically).
+luckperms:
+  # Show the player's LuckPerms prefix in front of their name in the tab list.
+  tab-prefix: false
+  # Show the player's LuckPerms prefix above their head in the world
+  # (implemented via a scoreboard team prefix).
+  name-prefix: false
+  # Sort the tab list by LuckPerms group weight - whichever group a player
+  # is in with the highest weight set (Group > Set Weight in LuckPerms)
+  # counts as their highest role, and higher roles are sorted to the top.
+  # This runs independently of the two toggles above (it doesn't require
+  # either prefix display to be on) and needs no command - it's always on
+  # unless you set this to false.
+  sort-by-weight: true
+
+# How player names are laid out in the tab list. This is MiniMessage
+# format (https://docs.advntr.dev/minimessage/format.html).
+# <prefix> - the LuckPerms prefix, only inserted when luckperms.tab-prefix is on
+# <name>   - the player's name
+# <ping>   - the colored ping component described below
+format: "<prefix><white><name> <dark_gray>(<ping><dark_gray>)"
+
+# Ping is colored based on how high it is (in milliseconds).
+ping:
+  good-color: "<green>"
+  good-max: 100
+  ok-color: "<yellow>"
+  ok-max: 250
+  bad-color: "<red>"
+
+# The purple-themed header/footer shown above and below the player list.
+tab-list:
+  footer-enabled: true
+  footer: |-
+    <dark_purple><strikethrough>                              </strikethrough>
+    <light_purple>Effect SMP <dark_gray>* <white><online><gray>/<max> <white>online
+    <dark_purple><strikethrough>                              </strikethrough>
+
+# The image banner drawn across the top of the tab list. Minecraft's tab
+# list header is plain text, so this works by shipping a resource pack
+# that maps the banner image onto a custom font, and the header sends the
+# matching string of characters. See README.md for full setup details --
+# most importantly, "public-address" below MUST be an address your
+# players' clients can reach (a forwarded port / your server's public IP).
+header-image:
+  enabled: false
+  # Port the plugin's built-in tiny HTTP server listens on for serving pack.zip.
+  port: 25566
+  # Public address players will download the pack from, e.g. "play.effectsmp.net".
+  # Leave blank to fall back to the server's configured server-ip (often blank too --
+  # you will very likely need to set this yourself).
+  public-address: ""
+  # Whether players are forced to accept the pack to keep playing.
+  required: false
+  prompt: "<light_purple>Effect SMP would like to show you a custom tab list banner."
+  # Plain-text fallback header shown when header-image is disabled.
+  fallback-header: |-
+    <dark_purple><strikethrough>                              </strikethrough>
+    <light_purple>* <white>Effect SMP <light_purple>*
+    <dark_purple><strikethrough>                              </strikethrough>
