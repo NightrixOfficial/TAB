@@ -1,0 +1,23 @@
+name: Tablist
+version: '${project.version}'
+main: net.effectsmp.tablist.TablistPlugin
+api-version: '1.21'
+author: EffectSMP
+description: Custom tab list with ping display, LuckPerms prefixes and an image banner header.
+softdepend: [LuckPerms]
+load: POSTWORLD
+
+commands:
+  display:
+    description: Control Tablist's LuckPerms prefix display.
+    usage: /<command> lp <tab|name> <enable|disable>
+    permission: tablist.admin
+  tablist:
+    description: Turn Tablist's custom look on/off without touching the LuckPerms prefix settings.
+    usage: /<command> display <on|off>
+    permission: tablist.admin
+
+permissions:
+  tablist.admin:
+    description: Allows use of /display and /tablist to control Tablist.
+    default: op
